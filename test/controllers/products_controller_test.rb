@@ -60,6 +60,14 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to product_url(@product)
   end
 
+  test 'should not destroy product' do
+    assert_difference('Product.count', 0) do
+      delete product_url(products(:one))
+    end
+
+    assert_redirect_to products_url
+  end
+
   test 'should destroy product' do
     assert_difference('Product.count', -1) { delete product_url(@product) }
 
