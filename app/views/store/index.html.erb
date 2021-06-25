@@ -2,10 +2,6 @@
   <aside id="notice"><%= notice %></aside>
 <% end %>
 <h1>Your Pragmatic Catalog</h1>
-
-
-
-
 <ul class="catalog">
   <% cache @products do %>
     <% @products.each do |product| %>
@@ -19,6 +15,7 @@
           <div class="price">
             <%= number_to_currency(product.price) %>
           </div>
+          <%= button_to("Add to Cart", line_items_path(product_id: product)) %>
         </li>
       <% end %>
     <% end %>
