@@ -2,6 +2,10 @@
   <aside id="notice"><%= notice %></aside>
 <% end %>
 <h1>Your Pragmatic Catalog</h1>
+<% if @counter > 5 %>
+  <h3>Times visited: <%= @counter %></h3>
+<% end %>
+
 <ul class="catalog">
   <% cache @products do %>
     <% @products.each do |product| %>

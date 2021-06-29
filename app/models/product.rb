@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   # associations
-  has_many :line_items
+  has_many :line_items, dependent: :destroy
 
   # validations
   validates :title, :description, :image_url, presence: true
@@ -25,7 +25,7 @@ class Product < ApplicationRecord
 
   def ensure_not_referenced_by_any_line_item
     unless line_items.empty?
-      errors.add(:base, "Line Items are present")
+      errors.add(:base, 'Line Items are present')
       throw :abort
     end
   end
